@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Foot Work: Master Poetic Feet</title>
+<style>
+:root{--bg:#faf6ee;--card:#fff;--ink:#2a2118;--mute:#7a6c5c;--line:#e6dccb;--acc:#b5471f;--acc2:#1f6f6b;--ok:#2e7d32;--bad:#c62828;--okbg:#e5f3e6;--badbg:#fbe6e4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1712;--card:#262019;--ink:#f1e8d8;--mute:#b3a48e;--line:#3a3227;--acc:#ec8a5e;--acc2:#5fc2bb;--ok:#7fd183;--bad:#ff8a80;--okbg:#1e3220;--badbg:#3a1f1d}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:2rem;margin:0}h1 span{color:var(--acc)}
+.sub{color:var(--mute);margin:2px 0 16px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+nav button{flex:1;min-width:110px;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit;cursor:pointer;font-weight:600}
+nav button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.serif{font-family:Georgia,serif}
+.beats{display:flex;gap:8px;align-items:center;margin:8px 0}
+.b{border-radius:50%;background:var(--acc);display:inline-block;transition:.15s}
+.b.s{width:26px;height:26px}.b.u{width:12px;height:12px;background:transparent;border:2px solid var(--mute)}
+.pat{font:700 1.3rem Georgia,serif;letter-spacing:.04em;color:var(--acc2)}
+.tag{display:inline-block;font-size:.75rem;background:var(--line);color:var(--mute);border-radius:99px;padding:2px 9px;margin-right:4px}
+button.btn{padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+button.btn.pri{background:var(--acc);color:#fff;border-color:var(--acc)}
+button.btn:disabled{opacity:.5;cursor:default}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:12px 0}
+.opts button.ok{background:var(--okbg);border-color:var(--ok)}.opts button.no{background:var(--badbg);border-color:var(--bad)}
+.big{font:700 2.4rem Georgia,serif;text-align:center;margin:10px 0}
+.fb{padding:10px 12px;border-radius:10px;margin-top:10px}.fb.ok{background:var(--okbg)}.fb.no{background:var(--badbg)}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc2)}
+.prog{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:6px}
+.sy{display:inline-flex;flex-direction:column;align-items:center;margin:4px 3px;cursor:pointer;user-select:none}
+.sy b{font:1.15rem Georgia,serif;padding:6px 8px;border:2px solid var(--line);border-radius:8px;background:var(--card);font-weight:400}
+.sy.on b{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.sy small{height:16px;color:var(--mute);font-size:.8rem}
+.sy.right b{outline:3px solid var(--ok)}.sy.wrong b{outline:3px solid var(--bad)}
+label.sw{display:flex;gap:8px;align-items:center;font-size:.95rem;color:var(--mute);cursor:pointer}
+.hide{display:none}
+</style></head><body><div class="wrap">
+<h1>Foot <span>Work</span></h1>
+<p class="sub">Learn the five poetic feet, then prove you can hear them.</p>
+<nav id="nav"></nav>
+<main id="main"></main>
+</div>
+<script>
+const F={
+iamb:{n:'Iamb',adj:'iambic',p:'01',say:'da-DUM',ex:'be-LIEVE',tip:'Rising rhythm. Think of a heartbeat: ba-DUM.'},
+trochee:{n:'Trochee',adj:'trochaic',p:'10',say:'DUM-da',ex:'GAR-den',tip:'Falling rhythm. Starts strong, then drops off.'},
+spondee:{n:'Spondee',adj:'spondaic',p:'11',say:'DUM-DUM',ex:'HEART-BEAT',tip:'Two heavy beats. Rare in words, so look for it in phrases.'},
+dactyl:{n:'Dactyl',adj:'dactylic',p:'100',say:'DUM-da-da',ex:'PO-e-try',tip:'One strong beat, then two light. Like a waltz: ONE-two-three.'},
+anapest:{n:'Anapest',adj:'anapestic',p:'001',say:'da-da-DUM',ex:'un-der-STAND',tip:'Two light beats rush toward one strong. Galloping rhythm.'}};
+const W=[
+['iamb',['be','lieve']],['iamb',['a','lone']],['iamb',['de','lay']],['iamb',['to','day']],['iamb',['re','peat']],
+['trochee',['gar','den']],['trochee',['ti','ger']],['trochee',['hap','py']],['trochee',['run','ning']],['trochee',['moth','er']],
+['spondee',['heart','beat']],['spondee',['dead','end']],['spondee',['fast','food']],['spondee',['hot','dog']],['spondee',['free','fall']],
+['dactyl',['po','et','ry']],['dactyl',['fam','i','ly']],['dactyl',['but','ter','fly']],['dactyl',['dif','fi','cult']],['dactyl',['car','a','mel']],
+['anapest',['un','der','stand']],['anapest',['in','ter','rupt']],['anapest',['ser','e','nade']],['anapest',['o','ver','come']],['anapest',['com','pre','hend']]];
+const L=[
+{s:'Shall I compare thee to a summer\u2019s day'.split(' '),syl:['Shall','I','com','pare','thee','to','a','sum','mer\u2019s','day'],p:'0101010101',foot:'iamb',meter:'iambic pentameter (5 feet)',by:'Shakespeare'},
+{syl:['Once','u','pon','a','mid','night','drea','ry'],p:'10101010',foot:'trochee',meter:'trochaic tetrameter (4 feet)',by:'Poe'},
+{syl:['\u2019Twas','the','night','be','fore','Christ','mas','when','all','through','the','house'],p:'001001001001',foot:'anapest',meter:'anapestic tetrameter (4 feet)',by:'Moore'},
+{syl:['Half','a','league','half','a','league','half','a','league','on','ward'],p:'10010010010',foot:'dactyl',meter:'dactylic, final foot clipped',by:'Tennyson',note:'The last foot is cut short to two syllables.'},
+{syl:['The','cur','few','tolls','the','knell','of','part','ing','day'],p:'0101010101',foot:'iamb',meter:'iambic pentameter (5 feet)',by:'Gray'},
+{syl:['Ty','ger','Ty','ger','burn','ing','bright'],p:'1010101',foot:'trochee',meter:'trochaic, final foot clipped',by:'Blake',note:'The last foot drops its unstressed syllable.'}];
+const $=s=>document.querySelector(s),main=$('#main');
+const st={tab:'learn',stats:{},scan:[],q:null};
+Object.keys(F).forEach(k=>st.stats[k]={r:0,t:0});
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const tabs=[['learn','Learn'],['name','Name the Foot'],['scan','Scan a Line'],['res','My Results']];
+function nav(){$('#nav').innerHTML=tabs.map(t=>`<button class="${st.tab==t[0]?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('')}
+function go(t){st.tab=t;nav();({learn,name:nameStart,scan:scanStart,res}[t])()}
+function dots(p){return '<div class="beats">'+[...p].map(c=>`<span class="b ${c=='1'?'s':'u'}"></span>`).join('')+'</div>'}
+function pretty(sy,p){return sy.map((s,i)=>p[i]=='1'?s.toUpperCase():s).join('-')}
+
+function learn(){
+main.innerHTML=`<div class="card"><b>How to find the stress</b><p style="margin:6px 0 0">Say the word out loud. Rest your hand under your chin: the syllable where your jaw drops most is stressed. Stress is a <i>strong beat</i> (big dot), and an unstressed syllable is a <i>weak beat</i> (small ring). One group of beats is a <b>foot</b>.</p></div>
+<div class="grid">`+Object.entries(F).map(([k,f])=>`<div class="card"><div class="tag">${f.adj}</div><h3 class="serif" style="margin:6px 0 0;font-size:1.4rem">${f.n}</h3>${dots(f.p)}<div class="pat">${f.say}</div><p style="margin:6px 0;color:var(--mute)">${f.tip}</p><div class="serif" style="font-size:1.2rem">e.g. <b>${f.ex}</b></div></div>`).join('')+`</div>
+<div class="card"><b>Naming a line</b><p style="margin:6px 0 0">A meter has two parts: the foot type and the number of feet. 1 = monometer, 2 = dimeter, 3 = trimeter, 4 = tetrameter, 5 = pentameter. So <i>iambic pentameter</i> is five iambs, ten syllables.</p><p style="margin:10px 0 0"><button class="btn pri" onclick="go('name')">Start practicing</button></p></div>`}
+
+function nameStart(){main.innerHTML=`<div class="card"><h3 style="margin-top:0">Name the Foot</h3><p>Ten words or phrases. Pick the foot each one makes.</p>
+<label class="sw"><input type="checkbox" id="hint" checked> Show stress hints (turn off for challenge mode)</label><p><button class="btn pri" onclick="nameRun()">Begin</button></p></div>`}
+function nameRun(){const h=$('#hint').checked;st.q={i:0,sc:0,h,list:shuf(W).slice(0,10)};nameQ()}
+function nameQ(){const q=st.q;if(q.i>=10){return nameEnd()}
+const [foot,sy]=q.list[q.i],p=F[foot].p;q.cur=foot;q.done=false;
+main.innerHTML=`<div class="card"><div class="prog"><span>Question ${q.i+1} of 10</span><span>Score ${q.sc}${q.h?'':' \u00b7 challenge mode'}</span></div>
+<div class="bar"><i style="width:${q.i*10}%"></i></div>
+<div class="big">${q.h?pretty(sy,p):sy.join('-')}</div>${q.h?`<div style="display:flex;justify-content:center">${dots(p)}</div>`:'<p style="text-align:center;color:var(--mute);margin:0">Say it aloud and find the stress.</p>'}
+<div class="opts">${Object.entries(F).map(([k,f])=>`<button class="btn" id="o-${k}" onclick="nameAns('${k}')">${f.n}</button>`).join('')}</div><div id="fb"></div></div>`}
+function nameAns(k){const q=st.q;if(q.done)return;q.done=true;const ok=k==q.cur,[foot,sy]=q.list[q.i];
+st.stats[q.cur].t++;if(ok){q.sc++;st.stats[q.cur].r++}
+$('#o-'+k).classList.add(ok?'ok':'no');$('#o-'+q.cur).classList.add('ok');
+$('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'Correct.':'Not quite.'}</b> ${pretty(sy,F[foot].p)} is a ${F[foot].n.toLowerCase()} (${F[foot].say}). ${F[foot].tip}</div><p><button class="btn pri" onclick="st.q.i++;nameQ()">${q.i==9?'Finish':'Next'}</button></p>`}
+function nameEnd(){const q=st.q;main.innerHTML=`<div class="card"><h3 style="margin-top:0">Round complete: ${q.sc}/10</h3><p>${q.sc>=9?'Excellent ear. Try challenge mode with hints off.':q.sc>=6?'Solid. Check My Results to see which foot to review.':'Keep going. Re-read the Learn tab, then try again with hints on.'}</p><button class="btn pri" onclick="nameStart()">Play again</button> <button class="btn" onclick="go('res')">My Results</button></div>`}
+
+function scanStart(){st.sc={order:shuf(L.map((_,i)=>i)),n:0,tot:0,pat:0,ft:0};scanQ()}
+function scanQ(){const s=st.sc;if(s.n>=L.length){return main.innerHTML=`<div class="card"><h3 style="margin-top:0">Scansion complete</h3><p>Stress patterns correct: <b>${s.pat}/${L.length}</b><br>Foot named correctly: <b>${s.ft}/${L.length}</b></p><button class="btn pri" onclick="scanStart()">Again</button> <button class="btn" onclick="go('res')">My Results</button></div>`}
+const l=L[s.order[s.n]];s.cur=l;s.marks=l.syl.map(()=>0);s.picked=null;s.done=false;
+main.innerHTML=`<div class="card"><div class="prog"><span>Line ${s.n+1} of ${L.length}</span><span class="tag">${l.by}</span></div>
+<p style="margin:0 0 6px"><b>Step 1.</b> Tap each syllable you would stress. Read the line aloud first.</p>
+<div id="sy" style="margin:10px 0">${l.syl.map((x,i)=>`<span class="sy" id="sy${i}" onclick="tog(${i})"><b>${x}</b><small></small></span>`).join('')}</div>
+<p style="margin:0"><b>Step 2.</b> Which foot repeats?</p>
+<div class="opts">${Object.entries(F).map(([k,f])=>`<button class="btn" id="p-${k}" onclick="pick('${k}')">${f.n}</button>`).join('')}</div>
+<button class="btn pri" id="chk" onclick="scanCheck()">Check</button><div id="fb"></div></div>`}
+function tog(i){const s=st.sc;if(s.done)return;s.marks[i]^=1;$('#sy'+i).classList.toggle('on')}
+function pick(k){const s=st.sc;if(s.done)return;s.picked=k;document.querySelectorAll('[id^=p-]').forEach(b=>b.style.outline='');$('#p-'+k).style.outline='3px solid var(--acc)'}
+function scanCheck(){const s=st.sc,l=s.cur;if(s.done)return;if(!s.picked){return $('#fb').innerHTML='<div class="fb no">Pick a foot first.</div>'}
+s.done=true;const ok1=s.marks.join('')==l.p,ok2=s.picked==l.foot;
+if(ok1)s.pat++;if(ok2)s.ft++;st.stats[l.foot].t++;if(ok1&&ok2)st.stats[l.foot].r++;
+l.syl.forEach((_,i)=>{const e=$('#sy'+i);e.classList.add(s.marks[i]==l.p[i]?'right':'wrong');e.querySelector('small').textContent=l.p[i]=='1'?'/':'\u02d8'});
+$('#chk').disabled=true;
+$('#fb').innerHTML=`<div class="fb ${ok1&&ok2?'ok':'no'}"><b>${ok1?'Stress pattern correct.':'Check the marks: green outline is right, red is off.'}</b> ${ok2?'Foot correct.':'Foot is '+F[l.foot].n.toLowerCase()+'.'}<br>Meter: ${l.meter}. ${l.note||''}</div><p><button class="btn pri" onclick="st.sc.n++;scanQ()">${s.n==L.length-1?'Finish':'Next line'}</button></p>`}
+
+function res(){const rows=Object.entries(F).map(([k,f])=>{const x=st.stats[k],pc=x.t?Math.round(100*x.r/x.t):0;return `<div style="margin:12px 0"><div class="prog" style="margin:0"><b style="color:var(--ink)">${f.n}</b><span>${x.t?x.r+'/'+x.t+' ('+pc+'%)':'not attempted'}</span></div><div class="bar"><i style="width:${pc}%"></i></div></div>`}).join('');
+const att=Object.entries(st.stats).filter(([k,x])=>x.t>=2).sort((a,b)=>a[1].r/a[1].t-b[1].r/b[1].t);
+const weak=att.length&&att[0][1].r/att[0][1].t<.8?att[0][0]:null;
+main.innerHTML=`<div class="card"><h3 style="margin-top:0">Accuracy by foot (this session)</h3>${rows}<div class="fb ${weak?'no':'ok'}">${weak?`<b>Review next:</b> ${F[weak].n}. ${F[weak].say}. ${F[weak].tip}`:'Answer at least two questions per foot to get a review recommendation.'}</div></div>`}
+nav();learn();
+</script></body></html>
